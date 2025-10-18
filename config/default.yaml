@@ -11,7 +11,7 @@ data:
   n_qubits: 4              # tetap 4, aman buat simulasi di M1
 
 model:
-  shots: null              # ⬅️ GANTI 1024 → null (mode analitik, lebih cepat)
+  shots: null              # GANTI 1024 → null (mode analitik, lebih cepat)
   feature_layers: 2
   variational_layers: 3
   hidden_dim: 48
@@ -20,14 +20,14 @@ model:
   use_complex_device: false  # tetap false, M1 gak perlu device kompleks
 
 training:
-  epochs: 40               # ⬅️ DARI 60 → 40 (hemat waktu, cukup stabil)
-  batch_size: 16           # ⬅️ DARI 32 → 16 (lebih ringan di RAM)
+  epochs: 40               # DARI 60 → 40 (hemat waktu, cukup stabil)
+  batch_size: 16           # DARI 32 → 16 (lebih ringan di RAM)
   learning_rate: 0.004
   weight_decay: 0.0008
   gradient_clip: 1.0
   patience: 8
   min_delta: 0.001
-  device: mps              # ⬅️ pakai Metal Performance Shaders (GPU M1)
+  device: mps              # pakai Metal Performance Shaders (GPU M1)
   log_interval: 10
 
 evaluation:
