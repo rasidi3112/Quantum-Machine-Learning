@@ -1,4 +1,4 @@
-# Quantum Machine Learning Research: Hybrid VQC vs. Quantum Kernel SVM
+# Quantum Machine Learning: Hybrid VQC vs. Quantum Kernel SVM
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-1.15-orange?logo=pytorch&logoColor=white)
@@ -10,14 +10,14 @@
 
 ## Overview
 
-This repository contains an **advanced Quantum Machine Learning (QML) application** for **binary classification**, such as biomedical or financial datasets.  
-It provides a comparison between:
+This repository contains a **Quantum Machine Learning (QML) project** for learning purposes and binary classification experiments.  
+It demonstrates a comparison between:
 
 - **Hybrid Variational Quantum Classifier (VQC)** — hybrid quantum-classical model trained with **PyTorch + PennyLane**.
 - **Quantum Kernel Support Vector Machine (QSVM)** — quantum kernel model leveraging **PennyLane + scikit-learn**.
 
-**Status:** Undergraduate Research Project (Semester 3)  
-**Key Highlight:** Hybrid evaluation pipeline combining quantum circuits and classical ML.
+**Status:** Educational Project / Undergraduate Learning  
+**Key Highlight:** Hybrid pipeline combining quantum circuits and classical ML for experimentation.
 
 ---
 
@@ -25,7 +25,7 @@ It provides a comparison between:
 
 - **Hybrid VQC:** Layered hardware-efficient ansatz, gradient-based optimization via Adam.  
 - **Quantum Kernel SVM:** Feature mapping to quantum Hilbert space, kernel-based classical SVM.  
-- **Modular architecture:** YAML-config driven, flexible for new datasets and experiments.  
+- **Modular architecture:** YAML-config driven, easy to modify datasets and experiments.  
 - **Automatic artifacts:** Trained models, metrics, and confusion matrices stored in `artifacts/`.  
 - **CLI & Logging:** Powered by **Typer** and **Rich** for clean command-line execution and logging.  
 - **Customizable experiments:** Shots, feature layers, variational layers, and early stopping can be tuned.
@@ -71,13 +71,14 @@ It provides a comparison between:
 | Quantum Kernel SVM (QSVM)| 75%     | 0.75     |
 | Classical SVM (baseline)| 80%     | 0.81     |
 
-**Key Finding:** QSVM slightly outperforms VQC in raw metrics, but **VQC provides a flexible hybrid approach** that allows integration with classical neural pipelines.  
+**Note:** QSVM shows slightly better accuracy in this simulation, while VQC allows hands-on experience with **hybrid quantum-classical pipelines**.
 
 ![VQC Confusion Matrix](artifacts/vqc_confusion_matrix.png)
 
-> Click the image to view the full **Confusion Matrix** in `artifacts/`.
+> Confusion Matrix example stored in `artifacts/`.
 
 ---
+
 ## Contact & License
 
 - **Author:** Ahmad Rasidi  Undergraduate Student (Semester 3)  
@@ -85,15 +86,14 @@ It provides a comparison between:
 - **GitHub:** [https://github.com/rasidi3112](https://github.com/rasidi3112)  
 
 **License:** MIT License  
+
+**Disclaimer:** This repository is intended for **educational and learning purposes** in Quantum Machine Learning experimentation.
+
 ---
-
-**Disclaimer:** This repository is intended for **research and educational purposes** in Quantum Machine Learning experimentation.
-
-
 
 ## Project Structure
 
-```plaintext
+```plaintex
 qml_app/
 ├─ config/
 │  └─ default.yaml
@@ -114,12 +114,13 @@ qml_app/
 └─ requirements.txt
 
 
-
 ---
 
-## How to Run
 
-```bash
+
+
+How To Run
+
 # 1. Create & activate virtual environment
 python -m venv .venv
 source .venv/bin/activate      # Windows: .venv\Scripts\activate
@@ -135,8 +136,3 @@ python -m qml_app.main train --model kernel --config config/default.yaml
 
 # 5. Evaluate VQC
 python -m qml_app.main evaluate --model vqc --config config/default.yaml
-
-
-
----
-
