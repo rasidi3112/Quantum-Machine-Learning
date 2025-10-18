@@ -80,8 +80,8 @@ It provides a comparison between:
 ---
 ## Contact & License
 
-- **Author:** Rasidi Ece, Undergraduate Student (Semester 3)  
-- **Email:** rasidi@example.com  
+- **Author:** Ahmad Rasidi  Undergraduate Student (Semester 3)  
+- **Email:** rasidi.basit@gmail.com  
 - **GitHub:** [https://github.com/rasidi3112](https://github.com/rasidi3112)  
 
 **License:** MIT License  
