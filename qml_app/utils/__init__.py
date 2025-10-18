@@ -1,0 +1,1 @@
+"""Utility helpers for the QML application."""
