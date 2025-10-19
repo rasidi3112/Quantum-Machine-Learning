@@ -1,6 +1,6 @@
 data:
   dataset: moons           # opsi: moons, circles, breast_cancer
-  n_samples: 300           # DARI 900 → 300 biar kernel QML gak berat banget
+  n_samples: 300           # DARI 900 → 300 biar kernel QML gak berat bangett
   noise: 0.25
   test_size: 0.2
   val_size: 0.15
