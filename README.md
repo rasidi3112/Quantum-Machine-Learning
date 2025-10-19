@@ -15,9 +15,9 @@ It demonstrates a comparison between:
 
 - **Hybrid Variational Quantum Classifier (VQC)** — hybrid quantum-classical model trained with **PyTorch + PennyLane**.
 - **Quantum Kernel Support Vector Machine (QSVM)** — quantum kernel model leveraging **PennyLane + scikit-learn**.
-
-**Status:** Educational Project / Undergraduate Learning  
-**Key Highlight:** Hybrid pipeline combining quantum circuits and classical ML for experimentation.
+  
+ **Status**: Experimental Quantum Machine Learning Project  
+ **Key Highlight**: Demonstrates hybrid quantum-classical ML workflows with configurable pipelines and modular design.
 
 ---
 
@@ -81,13 +81,13 @@ It demonstrates a comparison between:
 
 ## Contact & License
 
-- **Author:** Ahmad Rasidi  Undergraduate Student (Semester 3)  
+- **Author:** Ahmad Rasidi 
 - **Email:** rasidi.basit@gmail.com  
 - **GitHub:** [https://github.com/rasidi3112](https://github.com/rasidi3112)  
 
 **License:** MIT License  
 
-**Disclaimer:** This repository is intended for **educational and learning purposes** in Quantum Machine Learning experimentation.
+**Disclaimer:** This repository is intended for experimentation and practical exploration of Quantum Machine Learning concepts.
 
 ---
 
@@ -117,22 +117,51 @@ qml_app/
 ---
 
 
-
-
 How To Run
+1. Clone the Repository
+  git clone https://github.com/rasidi3112/Quantum-Machine-Learning.git
+  cd Quantum-Machine-Learning
+  
+2. Create and Activate Virtual Environment
+  # macOS / Linux
+  python -m venv .venv
+  source .venv/bin/activate
+  
+  # Windows
+  python -m venv .venv
+  .venv\Scripts\activate
 
-# 1. Create & activate virtual environment
-python -m venv .venv
-source .venv/bin/activate      # Windows: .venv\Scripts\activate
+3. Install Dependencies
+  pip install --upgrade pip
+  pip install -r requirements.txt
 
-# 2. Install dependencies
-pip install -r requirements.txt
+4. Train Models
+  a. Hybrid Variational Quantum Classifier (VQC)
+      Run :
+      python -m qml_app.main train --model vqc --config config/default.yaml
 
-# 3. Train Hybrid VQC
-python -m qml_app.main train --model vqc --config config/default.yaml
+  b. Quantum Kernel SVM (QSVM)
+      Run :
+      python -m qml_app.main train --model kernel --config config/default.yaml
 
-# 4. Train Quantum Kernel SVM
-python -m qml_app.main train --model kernel --config config/default.yaml
+        Tip: Modify config/default.yaml to change datasets, qubits, layers, batch size, etc.
+  
 
-# 5. Evaluate VQC
-python -m qml_app.main evaluate --model vqc --config config/default.yaml
+5. Evaluate Models
+      Run :
+      python -m qml_app.main evaluate --model vqc --config config/default.yaml
+      python -m qml_app.main evaluate --model kernel --config config/default.yaml
+
+  Evaluation results, including metrics and confusion matrices, are saved in artifacts/.
+
+6. Additional Notes
+    Device Selection:
+      - Apple M1/M2 → device: mps
+      - NVIDIA GPU → device: cuda
+      - CPU-only → device: cpu
+    Shots:
+    - nshots=null for analytic/simulated mode (fast, ideal for CPU)
+    - shots=1024 or higher for realistic sampling on quantum hardware
+    Artifacts: Check artifacts/ for trained models, metrics, ROC curves, and confusion matrices
+
+# Note: Adjust --device flag in config/default.yaml for CPU or GPU.
