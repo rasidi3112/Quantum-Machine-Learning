@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+title: "Quantum Machine Learning: Hybrid VQC vs Quantum Kernel SVM"
+message: "Jika Anda menggunakan kode ini, mohon sertakan kutipan berikut."
+authors:
+  - family-names: "Rasidi"
+    given-names: "Ahmad"
+    email: "rasidi.basit@gmail.com"
+    affiliation: "Independent Researcher — Quantum Computing and Machine Learning"
+abstract: >
+  This repository presents a comparative experimental study of hybrid quantum-classical learning 
+  models using PennyLane, PyTorch, and Qiskit. 
+  It implements both Variational Quantum Classifier (VQC) and Quantum Kernel SVM (QSVM) architectures 
+  for binary classification tasks, highlighting differences in performance and design between 
+  variational and kernel-based quantum models.
+  
+  The project follows international research standards for reproducibility, modular configuration, 
+  and open scientific development.
+
+keywords:
+  - Quantum Machine Learning
+  - Variational Quantum Classifier
+  - Quantum Kernel SVM
+  - PennyLane
+  - Qiskit
+  - PyTorch
+  - Hybrid Quantum-Classical
+  - Open Research
+
+license: MIT
+repository-code: "https://github.com/rasidi3112/Quantum-Machine-Learning"
+version: "1.0.0"
+date-released: 2025-10-19
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Rasidi"
+      given-names: "Ahmad"
+  title: "Quantum Machine Learning: Hybrid VQC vs Quantum Kernel SVM"
+  journal: "Independent Quantum Computing Research Archive"
+  year: 2025
+  url: "https://github.com/rasidi3112/Quantum-Machine-Learning"
