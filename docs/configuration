@@ -10,7 +10,7 @@ data:
   noise: 0.25
   test_size: 0.2
   val_size: 0.15
-  random_state: 123
+  random_state: 1001 
   feature_scaler: standard # options: standard, minmax, robust
   feature_expansion: polynomial  # options: polynomial, none
   expansion_degree: 3
