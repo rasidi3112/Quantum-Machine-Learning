@@ -63,23 +63,6 @@ It demonstrates a comparison between:
 
 ---
 
-## Results and Analysis
-
-| Model                   | Accuracy | F1 Score |
-|-------------------------|---------|----------|
-| Hybrid VQC              | 70%     | 0.70     |
-| Quantum Kernel SVM (QSVM)| 75%     | 0.75     |
-| Classical SVM (baseline)| 80%     | 0.81     |
-
-**Note:** QSVM shows slightly better accuracy in this simulation, while VQC allows hands-on experience with **hybrid quantum-classical pipelines**.  
-
-***Note:** Results vary significantly based on hardware constraints and simulation parameters. The metrics shown reflect typical behavior when running on standard laptop hardware.*
-
-![VQC Confusion Matrix](artifacts/vqc_confusion_matrix.png)
-
-> Confusion Matrix example stored in `artifacts/`.
-
----
 
 ## Contact & License
 
