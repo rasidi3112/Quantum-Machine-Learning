@@ -13,8 +13,8 @@
 This repository contains a **Quantum Machine Learning (QML) project** for learning purposes and binary classification experiments.  
 It demonstrates a comparison between:
 
-- **Hybrid Variational Quantum Classifier (VQC)** — hybrid quantum-classical model trained with **PyTorch + PennyLane**.
-- **Quantum Kernel Support Vector Machine (QSVM)** — quantum kernel model leveraging **PennyLane + scikit-learn**.
+- **Hybrid Variational Quantum Classifier (VQC)** : hybrid quantum-classical model trained with **PyTorch + PennyLane**.
+- **Quantum Kernel Support Vector Machine (QSVM)** : quantum kernel model leveraging **PennyLane + scikit-learn**.
   
  **Status**: Experimental Quantum Machine Learning Project  
  **Key Highlight**: Demonstrates hybrid quantum-classical ML workflows with configurable pipelines and modular design.
@@ -23,11 +23,11 @@ It demonstrates a comparison between:
 
 ## Key Features & Highlights
 
-- **Hybrid VQC:** Layered hardware-efficient ansatz, gradient-based optimization via Adam.  
+- **Hybrid VQC:** Layered hardware efficient ansatz, gradient-based optimization via Adam.  
 - **Quantum Kernel SVM:** Feature mapping to quantum Hilbert space, kernel-based classical SVM.  
-- **Modular architecture:** YAML-config driven, easy to modify datasets and experiments.  
+- **Modular architecture:** YAML config driven, easy to modify datasets and experiments.  
 - **Automatic artifacts:** Trained models, metrics, and confusion matrices stored in `artifacts/`.  
-- **CLI & Logging:** Powered by **Typer** and **Rich** for clean command-line execution and logging.  
+- **CLI & Logging:** Powered by **Typer** and **Rich** for clean command line execution and logging.  
 - **Customizable experiments:** Shots, feature layers, variational layers, and early stopping can be tuned.
 
 ---
