@@ -25,9 +25,6 @@ def load_config(config_path: Path) -> AppConfig:
     return build_app_config(cfg_dict)
 
 
-# ==========================================================
-#  TRAIN COMMAND
-# ==========================================================
 @app.command()
 def train(
     model: str = typer.Option("vqc", "--model", "-m", help="Model yang dilatih (vqc atau kernel)"),
@@ -86,7 +83,9 @@ def train(
             f"(acc={result.accuracy:.4f}, f1={result.f1:.4f})"
         )
 
-        # ✅ FIX: Simpan hanya parameter penting, bukan fungsi lokal (anti-pickling error)
+       
+        qsvc.save(artifacts_dir)
+
         model_path = artifacts_dir / "kernel_model_params.pkl"
         model_state = {
             "n_qubits": cfg.data.n_qubits,
@@ -103,9 +102,6 @@ def train(
         raise typer.BadParameter("Model harus 'vqc' atau 'kernel'.")
 
 
-# ==========================================================
-#  EVALUATE COMMAND
-# ==========================================================
 @app.command()
 def evaluate(
     model: str = typer.Option("vqc", "--model", "-m"),
@@ -158,6 +154,8 @@ def evaluate(
             c_regularization=model_state["c_regularization"],
             use_complex_device=model_state["use_complex_device"],
         )
+
+        qsvc.load(artifacts_dir)
 
         if model_state.get("trained_params") is not None:
             qsvc.trained_params_ = model_state["trained_params"]
