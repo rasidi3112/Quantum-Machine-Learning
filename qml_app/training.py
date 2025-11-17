@@ -26,14 +26,14 @@ def resolve_device(preference: str) -> torch.device:
         raise RuntimeError("CUDA tidak tersedia.")
     if preference == "mps":
         if torch.backends.mps.is_available():
-            # ⚠️ QML (PennyLane) belum mendukung MPS dengan baik, jadi kita pakai CPU
+        
             print("⚠️ MPS terdeteksi tapi belum stabil untuk QML — menggunakan CPU sebagai gantinya.")
             return torch.device("cpu")
         raise RuntimeError("MPS tidak tersedia.")
-    # auto
+    
     if torch.cuda.is_available():
         return torch.device("cuda")
-    # ⚠️ default ke CPU, bukan MPS 
+    
     return torch.device("cpu")
 
 
