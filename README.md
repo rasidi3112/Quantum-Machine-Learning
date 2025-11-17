@@ -150,3 +150,22 @@ How To Run
     Artifacts: Check artifacts/ for trained models, metrics, ROC curves, and confusion matrices
 
 # Note: Adjust --device flag in config/default.yaml for CPU or GPU.
+
+
+7. Run Additional Scripts
+Kernel folder 
+# Convert or preprocess data with convert.py
+python3 artifacts/kernel/convert.py
+
+# Run custom scripts
+python3 artifacts/kernel/script.py
+
+VQC folder
+# Convert PyTorch model to JSON format
+python3 artifacts/vqc/convert_pt_to_json.py
+
+
+
+
+
+
