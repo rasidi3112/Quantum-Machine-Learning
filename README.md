@@ -8,58 +8,82 @@
 
 ---
 
-## Overview
+# Overview
 
-This repository contains a **Quantum Machine Learning (QML) project** for learning purposes and binary classification experiments.  
-It demonstrates a comparison between:
+This repository hosts an Advanced Quantum Machine Learning (QML) project designed for rigorous comparative analysis and reproducible research. It implements and benchmarks two leading NISQ-era paradigms:
 
-- **Hybrid Variational Quantum Classifier (VQC)** : hybrid quantum-classical model trained with **PyTorch + PennyLane**.
-- **Quantum Kernel Support Vector Machine (QSVM)** : quantum kernel model leveraging **PennyLane + scikit-learn**.
-  
- **Status**: Experimental Quantum Machine Learning Project  
- **Key Highlight**: Demonstrates hybrid quantum-classical ML workflows with configurable pipelines and modular design.
+**Hybrid Variational Quantum Classifier (VQC):** A trainable quantum-classical hybrid model optimized end-to-end using PyTorch and PennyLane.
+
+**Quantum Kernel Support Vector Machine (QSVM):** A kernel-based model utilizing quantum feature maps from PennyLane and Qiskit, interfaced with a classical SVM from scikit-learn.
+
+**Status:** Active Research & Development / Reproducible Benchmarking Framework  
+**Primary Goal:** To provide a statistically grounded, open-source comparison of VQC and QSVM stability and performance on binary classification tasks, emphasizing reproducibility and cross-platform execution.
 
 ---
 
-## Key Features & Highlights
+## Key Highlights & Features
 
-- **Hybrid VQC:** Layered hardware efficient ansatz, gradient-based optimization via Adam.  
-- **Quantum Kernel SVM:** Feature mapping to quantum Hilbert space, kernel-based classical SVM.  
-- **Modular architecture:** YAML config driven, easy to modify datasets and experiments.  
-- **Automatic artifacts:** Trained models, metrics, and confusion matrices stored in `artifacts/`.  
-- **CLI & Logging:** Powered by **Typer** and **Rich** for clean command line execution and logging.  
-- **Customizable experiments:** Shots, feature layers, variational layers, and early stopping can be tuned.
+**Statistically Robust Benchmarking:** Conducted six independent runs (random seeds 1001–1006) to quantify model variance and expose instability, moving beyond single-run demonstrations.
+
+**Reproducible Pipeline:** Enforces deterministic seeding, YAML-driven configuration (config/default.yaml), and automatic artifact logging (artifacts/) for full result reproducibility.
+
+**Cross-Platform Execution:** Seamlessly executes on CPU, Apple Silicon (MPS, with fallback), and CUDA, ensuring consistent results across diverse hardware.
+
+**Modular Architecture:** Features a clean separation of concerns (data, models, training, evaluation) for easy modification and extension.
+
+**Comprehensive Evaluation:** Reports accuracy, F1-score, and ROC-AUC, with automatic generation of confusion matrices and ROC curves.
+
+**Open Science Commitment:** Fully open-source, documented, and designed for independent verification and extension by the research community.
+
+---
+
+## Empirical Findings (Based on 6-Run Study)
+
+- VQC demonstrates high performance with variance (Mean Test Accuracy: ~81.1 percent, F1 ~0.80).
+- QSVM exhibits extreme instability (Mean F1: ~0.22), failing completely in 4 out of 6 runs (F1 = 0.00).
+- A classical SVM baseline consistently outperforms both QML models.
 
 ---
 
 ## Technology Stack
+## Framework Components
 
-| Component                  | Library/Framework       | Notes                             |
-|----------------------------|-----------------------|----------------------------------|
-| Quantum ML (VQC)           | PennyLane             | Hybrid quantum-classical model   |
-| Quantum ML (QSVM)          | PennyLane + Qiskit    | Quantum kernel computation       |
-| Classical ML / SVM         | Scikit-learn          | QSVM classifier                  |
-| Deep Learning / Optimizer  | PyTorch               | Gradient-based VQC training      |
-| CLI & Logging              | Typer, Rich           | Command-line interface & logging |
-| Config Management          | PyYAML                | YAML configuration files         |
-| Numerical Computation      | NumPy                 | Data preprocessing               |
+| Komponen                     | Library/Framework                | Catatan                                      |
+|-----------------------------|----------------------------------|----------------------------------------------|
+| **Pelatihan/Evaluasi VQC**  | PyTorch, PennyLane               | Backpropagation dan diferensiasi kuantum     |
+| **Pelatihan/Evaluasi QSVM** | PennyLane, Qiskit, Scikit-learn  | Quantum kernel computation & classification  |
+| **Antarmuka CLI & Logging** | Typer, Rich                      | Eksekusi perintah yang bersih dan log berformat |
+| **Manajemen Konfigurasi**   | PyYAML                           | Parameter eksperimen yang dapat dikonfigurasi |
+| **Pemrosesan Numerik**      | NumPy                            | Pra-pemrosesan data                           |
 
 ---
 
 ## Methodology
 
-### Hybrid Variational Quantum Classifier (VQC)
-- **Ansatz:** Layered Hardware-Efficient Circuit  
-- **Feature Encoding:** Classical features mapped to qubits using rotation gates  
-- **Optimizer:** Adam  
-- **Framework:** PennyLane + PyTorch  
-- **Training:** Early stopping, configurable shots, batch-based gradient updates  
+## Model Architecture Overview
 
-### Quantum Kernel SVM (QSVM)
-- **Quantum Feature Map:** ZZFeatureMap  
-- **Kernel:** Quantum state fidelity  
-- **Classifier:** Classical SVM (Scikit-learn)  
-- **Framework:** PennyLane + Scikit-learn  
+### Hybrid Variational Quantum Classifier (VQC)
+
+- **Architecture**: `HybridVariationalClassifier` (in `models.py`) combines a quantum layer implemented with `pennylane.QNode` and classical layers via `torch.nn.Module`.
+- **Ansatz**: `build_variational_circuit` (in `qnn_layers.py`) implements a configurable Hardware-Efficient Ansatz.
+- **Optimization**: `train_variational_model` (in `training.py`) uses `torch.optim.Adam`.
+- **Execution**: `evaluate_vqc` (in `evaluation.py`) computes final metrics on the test set.
+
+---
+
+### Quantum Kernel Support Vector Machine (QSVM)
+
+- **Architecture**: `QuantumKernelClassifier` (in `models.py`) integrates `qml.kernels` with `sklearn.svm.SVC`.
+- **Feature Map**: `build_kernel_qnode` (in `qnn_layers.py`) defines the `ZZFeatureMap`.
+- **Execution**: `evaluate_kernel` (in `evaluation.py`) computes final metrics on the test set.
+
+---
+
+### Main Workflow (in `main.py`)
+
+- Provides `train` and `evaluate` commands for both models (`vqc`, `kernel`).
+- Integrates Typer for the CLI and `seed.py` for global seed configuration.
+
 
 ---
 
