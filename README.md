@@ -190,6 +190,9 @@ python3 artifacts/vqc/convert_pt_to_json.py
 
 
 
+#
+ python generate_boxplots.py
+
 
 
 
