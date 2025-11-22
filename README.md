@@ -96,8 +96,6 @@ This repository hosts an Advanced Quantum Machine Learning (QML) project designe
 
 **License:** MIT License  
 
-**Disclaimer:** This repository is intended for experimentation and practical exploration of Quantum Machine Learning concepts.
-
 ---
 
 ## Project Structure
@@ -122,7 +120,7 @@ qml_app/
 │     └─ seed.py
 └─ requirements.txt
 
-
+``
 ---
 
 
@@ -190,7 +188,7 @@ python3 artifacts/vqc/convert_pt_to_json.py
 
 
 
-#
+# Generate boxplots for VQC and QVSM results
  python generate_boxplots.py
 
 
