@@ -6,6 +6,10 @@
 ![Qiskit](https://img.shields.io/badge/Qiskit-0.43-purple?logo=qiskit&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+<p align="center">
+  <img src="assets/images/qml_hero_banner.png" alt="Quantum Machine Learning" width="600">
+</p>
+
 ---
 
 # Overview
@@ -35,7 +39,15 @@ This repository hosts an Advanced Quantum Machine Learning (QML) project designe
 
 ## Methodology & Model Architecture
 
+<p align="center">
+  <img src="assets/images/qml_architecture_diagram.png" alt="Architecture Diagram" width="500">
+</p>
+
 ### Hybrid Variational Quantum Classifier (VQC)
+
+<p align="center">
+  <img src="assets/images/vqc_concept.png" alt="VQC Concept" width="400">
+</p>
 
 - **Architecture**: `HybridVariationalClassifier` (in `models.py`) combines a quantum layer implemented with `pennylane.QNode` and classical layers via `torch.nn.Module`.
 - **Ansatz**: `build_variational_circuit` (in `qnn_layers.py`) implements a configurable Hardware-Efficient Ansatz.
@@ -46,6 +58,10 @@ This repository hosts an Advanced Quantum Machine Learning (QML) project designe
 
 ### Quantum Kernel Support Vector Machine (QSVM)
 
+<p align="center">
+  <img src="assets/images/qsvm_concept.png" alt="QSVM Concept" width="400">
+</p>
+
 - **Architecture**: `QuantumKernelClassifier` (in `models.py`) integrates `qml.kernels` with `sklearn.svm.SVC`.
 - **Feature Map**: `build_kernel_qnode` (in `qnn_layers.py`) defines the `ZZFeatureMap`.
 - **Execution**: `evaluate_kernel` (in `evaluation.py`) computes final metrics on the test set.
@@ -54,8 +70,18 @@ This repository hosts an Advanced Quantum Machine Learning (QML) project designe
 
 ### Main Workflow (in `main.py`)
 
+<p align="center">
+  <img src="assets/images/qml_training_workflow.png" alt="Training Workflow" width="600">
+</p>
+
 - Provides `train` and `evaluate` commands for both models (`vqc`, `kernel`).
 - Integrates Typer for the CLI and `seed.py` for global seed configuration.
+
+### VQC vs QSVM Comparison
+
+<p align="center">
+  <img src="assets/images/vqc_vs_qsvm_comparison.png" alt="VQC vs QSVM" width="600">
+</p>
 
 
 ---
@@ -149,6 +175,10 @@ python -m qml_app.main train --model kernel --config config/default.yaml
 python -m qml_app.main evaluate --model vqc --config config/default.yaml
 python -m qml_app.main evaluate --model kernel --config config/default.yaml
 ```
+
+<p align="center">
+  <img src="assets/images/evaluation_metrics.png" alt="Evaluation Metrics" width="500">
+</p>
 
 Evaluation results, including metrics and confusion matrices, are saved in `artifacts/`.
 
