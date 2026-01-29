@@ -21,32 +21,7 @@ This repository hosts an Advanced Quantum Machine Learning (QML) project designe
 
 ---
 
-## Key Highlights & Features
-
-**Statistically Robust Benchmarking:** Conducted six independent runs (random seeds 1001–1006) to quantify model variance and expose instability, moving beyond single-run demonstrations.
-
-**Reproducible Pipeline:** Enforces deterministic seeding, YAML-driven configuration (config/default.yaml), and automatic artifact logging (artifacts/) for full result reproducibility.
-
-**Cross-Platform Execution:** Seamlessly executes on CPU, Apple Silicon (MPS, with fallback), and CUDA, ensuring consistent results across diverse hardware.
-
-**Modular Architecture:** Features a clean separation of concerns (data, models, training, evaluation) for easy modification and extension.
-
-**Comprehensive Evaluation:** Reports accuracy, F1-score, and ROC-AUC, with automatic generation of confusion matrices and ROC curves.
-
-**Open Science Commitment:** Fully open-source, documented, and designed for independent verification and extension by the research community.
-
----
-
-## Empirical Findings (Based on 6-Run Study)
-
-- VQC demonstrates high performance with variance (Mean Test Accuracy: ~81.1 percent, F1 ~0.80).
-- QSVM exhibits extreme instability (Mean F1: ~0.22), failing completely in 4 out of 6 runs (F1 = 0.00).
-- A classical SVM baseline consistently outperforms both QML models.
-
----
-
-## Technology Stack
-## Framework Components
+## Technology Stack & Framework Components
 
 | Komponen                     | Library/Framework                | Catatan                                      |
 |-----------------------------|----------------------------------|----------------------------------------------|
@@ -58,9 +33,7 @@ This repository hosts an Advanced Quantum Machine Learning (QML) project designe
 
 ---
 
-## Methodology
-
-## Model Architecture Overview
+## Methodology & Model Architecture
 
 ### Hybrid Variational Quantum Classifier (VQC)
 
@@ -120,76 +93,102 @@ qml_app/
 │     └─ seed.py
 └─ requirements.txt
 
-``
+```
+
 ---
 
 
-How To Run
-1. Clone the Repository
-  git clone https://github.com/rasidi3112/Quantum-Machine-Learning.git
-  cd Quantum-Machine-Learning
+## How To Run
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/rasidi3112/Quantum-Machine-Learning.git
+cd Quantum-Machine-Learning
+```
   
-2. Create and Activate Virtual Environment
-  # macOS / Linux
-  python -m venv .venv
-  source .venv/bin/activate
+### 2. Create and Activate Virtual Environment
+
+**macOS / Linux:**
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+**Windows:**
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 4. Train Models
+
+**a. Hybrid Variational Quantum Classifier (VQC)**
+```bash
+python -m qml_app.main train --model vqc --config config/default.yaml
+```
+
+**b. Quantum Kernel SVM (QSVM)**
+```bash
+python -m qml_app.main train --model kernel --config config/default.yaml
+```
+
+> **Tip:** Modify `config/default.yaml` to change datasets, qubits, layers, batch size, etc.
   
-  # Windows
-  python -m venv .venv
-  .venv\Scripts\activate
 
-3. Install Dependencies
-  pip install --upgrade pip
-  pip install -r requirements.txt
+### 5. Evaluate Models
 
-4. Train Models
-  a. Hybrid Variational Quantum Classifier (VQC)
-      Run :
-      python -m qml_app.main train --model vqc --config config/default.yaml
+```bash
+python -m qml_app.main evaluate --model vqc --config config/default.yaml
+python -m qml_app.main evaluate --model kernel --config config/default.yaml
+```
 
-  b. Quantum Kernel SVM (QSVM)
-      Run :
-      python -m qml_app.main train --model kernel --config config/default.yaml
+Evaluation results, including metrics and confusion matrices, are saved in `artifacts/`.
 
-        Tip: Modify config/default.yaml to change datasets, qubits, layers, batch size, etc.
-  
+### 6. Additional Notes
 
-5. Evaluate Models
-      Run :
-      python -m qml_app.main evaluate --model vqc --config config/default.yaml
-      python -m qml_app.main evaluate --model kernel --config config/default.yaml
+**Device Selection:**
+- Apple M1/M2 → `device: mps`
+- NVIDIA GPU → `device: cuda`
+- CPU-only → `device: cpu`
 
-  Evaluation results, including metrics and confusion matrices, are saved in artifacts/.
+**Shots:**
+- `shots=null` for analytic/simulated mode (fast, ideal for CPU)
+- `shots=1024` or higher for realistic sampling on quantum hardware
 
-6. Additional Notes
-    Device Selection:
-      - Apple M1/M2 → device: mps
-      - NVIDIA GPU → device: cuda
-      - CPU-only → device: cpu
-    Shots:
-    - nshots=null for analytic/simulated mode (fast, ideal for CPU)
-    - shots=1024 or higher for realistic sampling on quantum hardware
-    Artifacts: Check artifacts/ for trained models, metrics, ROC curves, and confusion matrices
+**Artifacts:** Check `artifacts/` for trained models, metrics, ROC curves, and confusion matrices.
 
-# Note: Adjust --device flag in config/default.yaml for CPU or GPU.
+> **Note:** Adjust `--device` flag in `config/default.yaml` for CPU or GPU.
 
 
-7. Run Additional Scripts
-Kernel folder 
+### 7. Run Additional Scripts
+
+**Kernel folder:**
+```bash
 # Convert or preprocess data with convert.py
 python3 artifacts/kernel/convert.py
 
 # Run custom scripts
 python3 artifacts/kernel/script.py
+```
 
-VQC folder
+**VQC folder:**
+```bash
 # Convert PyTorch model to JSON format
 python3 artifacts/vqc/convert_pt_to_json.py
+```
 
-
-
-# Generate boxplots for VQC and QVSM results
- python generate_boxplots.py
+**Generate boxplots for VQC and QSVM results:**
+```bash
+python generate_boxplots.py
+```
 
 
 
