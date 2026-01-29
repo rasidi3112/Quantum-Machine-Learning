@@ -23,13 +23,13 @@ This repository hosts an Advanced Quantum Machine Learning (QML) project designe
 
 ## Technology Stack & Framework Components
 
-| Komponen                     | Library/Framework                | Catatan                                      |
+| Component                   | Library/Framework                | Description                                  |
 |-----------------------------|----------------------------------|----------------------------------------------|
-| **Pelatihan/Evaluasi VQC**  | PyTorch, PennyLane               | Backpropagation dan diferensiasi kuantum     |
-| **Pelatihan/Evaluasi QSVM** | PennyLane, Qiskit, Scikit-learn  | Quantum kernel computation & classification  |
-| **Antarmuka CLI & Logging** | Typer, Rich                      | Eksekusi perintah yang bersih dan log berformat |
-| **Manajemen Konfigurasi**   | PyYAML                           | Parameter eksperimen yang dapat dikonfigurasi |
-| **Pemrosesan Numerik**      | NumPy                            | Pra-pemrosesan data                           |
+| **VQC Training/Evaluation** | PyTorch, PennyLane               | Backpropagation and quantum differentiation  |
+| **QSVM Training/Evaluation**| PennyLane, Qiskit, Scikit-learn  | Quantum kernel computation & classification  |
+| **CLI Interface & Logging** | Typer, Rich                      | Clean command execution and formatted logs   |
+| **Configuration Management**| PyYAML                           | Configurable experiment parameters           |
+| **Numerical Processing**    | NumPy                            | Data preprocessing                           |
 
 ---
 
