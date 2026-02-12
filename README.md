@@ -1,10 +1,11 @@
 # Quantum Machine Learning: Hybrid VQC vs. Quantum Kernel SVM
 
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-1.15-orange?logo=pytorch&logoColor=white)
-![PennyLane](https://img.shields.io/badge/PennyLane-0.30-lightblue?logo=pytorch&logoColor=white)
-![Qiskit](https://img.shields.io/badge/Qiskit-0.43-purple?logo=qiskit&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-1.15-orange?logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![PennyLane](https://img.shields.io/badge/PennyLane-0.30-lightblue?logo=pytorch&logoColor=white)](https://pennylane.ai/)
+[![Qiskit](https://img.shields.io/badge/Qiskit-0.43-purple?logo=qiskit&logoColor=white)](https://qiskit.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
+
 
 <p align="center">
   <img src="assets/images/qml_hero_banner.png" alt="Quantum Machine Learning" width="600">
