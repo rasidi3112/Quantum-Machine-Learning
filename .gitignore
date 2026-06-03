@@ -1,5 +1,7 @@
 # Virtual environment
 .venv/
+venv/
+env/
 
 # Python cache
 __pycache__/
@@ -11,3 +13,7 @@ __pycache__/
 
 # Artifacts (optional)
 artifacts/
+
+# OS
+.DS_Store
+Thumbs.db

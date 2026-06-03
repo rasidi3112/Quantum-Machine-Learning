@@ -78,7 +78,8 @@ class QuantumKernelClassifier:
 
    
     def predict(self, features: np.ndarray) -> np.ndarray:
-        assert self._svc is not None and self._train_features is not None, "Model belum dilatih."
+        if self._svc is None or self._train_features is None:
+            raise RuntimeError("Model has not been trained. Call fit() before predict().")
 
         kernel_block = qml.kernels.kernel_matrix(
             np.asarray(features, dtype=np.float64),
@@ -91,7 +92,8 @@ class QuantumKernelClassifier:
         return self._svc.predict(kernel_block)
 
     def predict_proba(self, features: np.ndarray) -> np.ndarray:
-        assert self._svc is not None and self._train_features is not None, "Model belum dilatih."
+        if self._svc is None or self._train_features is None:
+            raise RuntimeError("Model has not been trained. Call fit() before predict_proba().")
 
         kernel_block = qml.kernels.kernel_matrix(
             np.asarray(features, dtype=np.float64),
